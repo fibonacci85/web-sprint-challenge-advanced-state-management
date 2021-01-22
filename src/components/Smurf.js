@@ -5,13 +5,11 @@ export const Smurf = (props) => {
     
     console.log(props.smurfs)
     
-       
         return(<div data-testid="smurf" className="card">
             <h1>{props.smurfs.name}</h1>
             <h2>{props.smurfs.position}</h2>
             <h2>Nickname:{props.smurfs.nickname}</h2>
             <h3>Description:{props.smurfs.description}</h3>
-
         </div>);
     
 }

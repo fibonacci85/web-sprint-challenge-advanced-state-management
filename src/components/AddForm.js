@@ -1,22 +1,30 @@
 import { render } from '@testing-library/react';
+// import { set } from 'msw/lib/types/context';
 import React, { useState } from 'react';
+import {connect} from "react-redux";
 
-const AddForm = () => {
 
-const [input, setInput] = useState({
-        name:"",
-        position:"",
-        nickname:"",
-        description:""
-})
+
+const AddForm = (props) => {
+    console.log(props)
+
+const [name, setName] = useState("");
+const [position, setPosition] = useState("");
+const [nickname, setNickname] = useState("");
+const [description, setDescription] = useState("");
+const [smurfList, setSmurfList] = useState(props.smurfList)
 
 
         const handleChange = (e) => {
-            setInput(e.target.value);
+            setName(e.target.value);
+            setPosition(e.target.value)
+            setNickname(e.target.value)
+            setDescription(e.target.value)
         }
     
-        const handleClick = () => {
-
+        const handleClick = (e) => {
+            e.preventDefault();
+            setSmurfList(...smurfList, name,position,nickname,description)
         }
         
         return(<section>
@@ -25,13 +33,13 @@ const [input, setInput] = useState({
                 <div className="form-group">
                     <form onChange={handleChange}>
                         <label htmlFor="name">Name:</label><br/>
-                        <input name="name" id="name" type="text" value={input} />
+                        <input name="name" id="name" type="text" value={name} />
                         <label htmlFor="position">Position:</label><br/>
-                        <input name="position" id="position" type="text" value={input} />
+                        <input name="position" id="position" type="text" value={position} />
                         <label htmlFor="nickname">Nickname:</label><br/>
-                        <input name="nickname" id="nickname" type="text" value={input} />
+                        <input name="nickname" id="nickname" type="text" value={nickname} />
                         <label htmlFor="description">Description:</label><br/>
-                        <input name="description" id="description" type="text" value={input} />
+                        <input name="description" id="description" type="text" value={description} />
                     </form>
                 </div>
 
@@ -41,10 +49,15 @@ const [input, setInput] = useState({
         </section>);
         }
     
+const mapStateToProps = state => {
+    console.log(state.smurf)
+    return{
+        smurfList: state.smurf
+    }
+}
 
 
-
-export default AddForm;
+export default connect(mapStateToProps)(AddForm);
 
 //Task List:
 //1. Add in all necessary import components and library methods.
