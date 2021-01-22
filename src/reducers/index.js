@@ -1,16 +1,33 @@
 
 export const initialState = {
-    ifFetching: false,
+    isFetching: false,
     smurf:[],
     error:""
 }
 
 export const reducer = (state = initialState, action)=>{
     switch(action.type) {
+        case("FETCH_SMURF_START"):
+            return({
+                ...state,
+                isFetching: true,
+            });
+        case("FETCH_SMURF_SUCCESS"):
+            return({
+                ...state,
+                isFetching: false,
+                smurf:action.payload,
+               
+            })
+        case("FETCH_SMURF_FAIL"):
+            return({
+                isFetching: false,
+                error:action.payload
+            })        
         default:
             return state
     }
-}
+};
 
 
 

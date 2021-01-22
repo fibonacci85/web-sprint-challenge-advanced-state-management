@@ -1,15 +1,20 @@
 import React from 'react';
+import SmurfDisplay from './SmurfDisplay';
 
-class Smurf extends React.Component {
-    render() {
-        const { smurf } = this.props;
-
+export const Smurf = () => {
+    
+       
         return(<div data-testid="smurf" className="card">
+            <h1>Name:</h1>
+            <h2>Position:</h2>
+            <h2>Nickname:</h2>
+            <h3>Description</h3>
+
         </div>);
-    }
+    
 }
 
-export default Smurf;
+
 
 //Task List:
 //1. Access smurf to be displayed through props.
