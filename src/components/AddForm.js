@@ -1,22 +1,48 @@
-import React from 'react';
+import { render } from '@testing-library/react';
+import React, { useState } from 'react';
 
-class AddForm extends React.Component {
+const AddForm = () => {
 
-    render() {
+const [input, setInput] = useState({
+        name:"",
+        position:"",
+        nickname:"",
+        description:""
+})
+
+
+        const handleChange = (e) => {
+            setInput(e.target.value);
+        }
+    
+        const handleClick = () => {
+
+        }
+        
         return(<section>
             <h2>Add Smurf</h2>
             <form>
                 <div className="form-group">
-                    <label htmlFor="name">Name:</label><br/>
-                    <input onChange={this.handleChange} name="name" id="name" />
+                    <form onChange={handleChange}>
+                        <label htmlFor="name">Name:</label><br/>
+                        <input name="name" id="name" type="text" value={input} />
+                        <label htmlFor="position">Position:</label><br/>
+                        <input name="position" id="position" type="text" value={input} />
+                        <label htmlFor="nickname">Nickname:</label><br/>
+                        <input name="nickname" id="nickname" type="text" value={input} />
+                        <label htmlFor="description">Description:</label><br/>
+                        <input name="description" id="description" type="text" value={input} />
+                    </form>
                 </div>
 
                 <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
-                <button>Submit Smurf</button>
+                <button onClick={handleClick}>Submit Smurf</button>
             </form>
         </section>);
-    }
-}
+        }
+    
+
+
 
 export default AddForm;
 

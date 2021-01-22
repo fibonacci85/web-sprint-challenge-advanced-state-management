@@ -3,24 +3,24 @@ import { connect } from 'react-redux';
 import { getSmurf } from '../actions/index';
 import { Smurf } from "./Smurf";
 
-const SmurfDisplay = (props) => {
-
-   
+const SmurfDisplay = ({smurf,getSmurf,error,isFetching}) => {
 
    useEffect(() => {
-    props.getSmurf()
-   });
-    // const handleClick = () => {
-    //     getSmurf();
-    // }
- 
-        return(<div>
+    getSmurf()
+   }, []);
 
-            <Smurf />
-           
-           
-            
-
+   if (error) {
+       return <h2>There's an error...</h2>
+   }
+   if (isFetching) {
+       return <h2>Loading Smurfs...</h2>
+   }
+   
+        return(
+        <div>
+            {smurf.map(item => (
+              <Smurf smurfs={item}/>  
+            ))} 
         </div>)
     }
 
