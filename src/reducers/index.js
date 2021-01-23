@@ -10,6 +10,7 @@ import {FETCH_SMURF_START,
 export const initialState = {
     isFetching: false,
     smurf:[],
+    newSmurf:{},
     error:""
 }
 

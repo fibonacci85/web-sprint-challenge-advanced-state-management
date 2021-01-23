@@ -16,12 +16,13 @@ const SmurfDisplay = (props) => {
    
         return(
             <div>
-            {props.smurf.length > 0 ? props.smurf.map(item => 
-                {return <><h2>{item.name}</h2>
+            {props.smurf.map(item => 
+                (<div className="smurf" key={item.id}>
+                <h2>{item.name}</h2>
                 <h3>{item.position}</h3>  
                 <h4>Nickname:{item.nickname}</h4>
                 <p>{item.description}</p>
-                   </>}) : null}
+                   </div>)) }
             </div>
         
         )
