@@ -1,9 +1,9 @@
 import React from 'react';
-import SmurfDisplay from './SmurfDisplay';
+// import SmurfDisplay from './SmurfDisplay';
 
 export const Smurf = (props) => {
     
-    console.log(props.smurfs)
+    
     
         return(<div data-testid="smurf" className="card">
             <h1>{props.smurfs.name}</h1>
