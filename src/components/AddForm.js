@@ -15,18 +15,18 @@ export const AddForm = (props) => {
         id: Math.random()
     };
 
-    const [newSmurf, setNewSmurf] = useState(smurfValues)
+    const [smurf, setSmurf] = useState(smurfValues)
 
-    console.log(newSmurf)
+    console.log(smurf)
 
 
         const handleChange = (e) => {
-         setNewSmurf({...newSmurf, [e.target.name]: e.target.value });
+         setSmurf({...smurf, [e.target.name]: e.target.value });
         };
     
         const handleSubmit = (e) => {
             e.preventDefault();
-            props.addSmurf(newSmurf)
+            props.addSmurf(smurf)
         }
         
         return(<section>
@@ -36,23 +36,23 @@ export const AddForm = (props) => {
                         <label htmlFor="name">Name:</label><br/>
                             <input name="name" 
                             id="name" type="text" 
-                            value={newSmurf.name} 
+                            value={smurf.name} 
                             onChange={handleChange} />
                         <label htmlFor="position">Position:</label><br/>
                             <input name="position" 
                             id="position" type="text" 
-                            value={newSmurf.position} 
+                            value={smurf.position} 
                             onChange={handleChange} />
                         <label htmlFor="nickname">Nickname:</label><br/>
                             <input name="nickname" 
                             id="nickname" type="text" 
-                            value={newSmurf.nickname} 
+                            value={smurf.nickname} 
                             onChange={handleChange} />
                         <label htmlFor="description">Description:</label><br/>
                             <input name="description" 
                             id="description" 
                             type="text" 
-                            value={newSmurf.description} 
+                            value={smurf.description} 
                             onChange={handleChange}/>
                 </div>
 
