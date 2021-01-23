@@ -1,27 +1,30 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
-import { getSmurf } from '../actions/index';
-import { Smurf } from "./Smurf";
+import { getSmurf, addSmurf } from '../actions/index';
+// import { Smurf } from "./Smurf";
 
-const SmurfDisplay = ({smurf,getSmurf,error,isFetching}) => {
+const SmurfDisplay = (props) => {
 
    useEffect(() => {
-    getSmurf()
-   }, []);
+    props.getSmurf()
+   },[]);
 
-   if (error) {
-       return <h2>There's an error...</h2>
-   }
-   if (isFetching) {
-       return <h2>Loading Smurfs...</h2>
-   }
+   useEffect(() => {
+       props.addSmurf()
+   },[]);
+
    
         return(
-        <div>
-            {smurf.map(item => (
-              <Smurf smurfs={item}/>  
-            ))} 
-        </div>)
+            <div>
+            {props.smurf.length > 0 ? props.smurf.map(item => 
+                {return <><h2>{item.name}</h2>
+                <h3>{item.position}</h3>  
+                <h4>Nickname:{item.nickname}</h4>
+                <p>{item.description}</p>
+                   </>}) : null}
+            </div>
+        
+        )
     }
 
 const mapStateToProps = state => {
@@ -33,7 +36,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {getSmurf})(SmurfDisplay)
+
+export default connect(mapStateToProps, {getSmurf, addSmurf})(SmurfDisplay)
 
 //Task List:
 //1. Import in all needed components and library methods.

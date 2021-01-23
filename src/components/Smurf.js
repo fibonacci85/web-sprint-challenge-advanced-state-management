@@ -1,18 +1,19 @@
-import React from 'react';
-// import SmurfDisplay from './SmurfDisplay';
+// import React from 'react';
+// // import SmurfDisplay from './SmurfDisplay';
 
-export const Smurf = (props) => {
+// export const Smurf = (props) => {
+//     console.log(props)
     
     
     
-        return(<div data-testid="smurf" className="card">
-            <h1>{props.smurfs.name}</h1>
-            <h2>{props.smurfs.position}</h2>
-            <h2>Nickname:{props.smurfs.nickname}</h2>
-            <h3>Description:{props.smurfs.description}</h3>
-        </div>);
+//         return(<div data-testid="smurf" className="card">
+//             <h1>{props.smurfs.name}</h1>
+//             <h2>{props.smurfs.position}</h2>
+//             <h2>Nickname:{props.smurfs.nickname}</h2>
+//             <h3>Description:{props.smurfs.description}</h3>
+//         </div>);
     
-}
+// }
 
 
 

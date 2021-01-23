@@ -5,33 +5,35 @@ import {connect} from "react-redux";
 import { addSmurf } from '../actions/index';
 
 
-const AddForm = (props) => {
+export const AddForm = (props) => {
   
     const smurfValues = {
         name: "",
         position: "",
         nickname: "",
         description:"",
-        id: Math.random
-    }
+        id: Math.random()
+    };
 
     const [newSmurf, setNewSmurf] = useState(smurfValues)
+
+    console.log(newSmurf)
 
 
         const handleChange = (e) => {
          setNewSmurf({...newSmurf, [e.target.name]: e.target.value });
         };
     
-        const handleClick = (e) => {
+        const handleSubmit = (e) => {
             e.preventDefault();
             props.addSmurf(newSmurf)
         }
         
         return(<section>
             <h2>Add Smurf</h2>
-            <form onClick={handleClick}>
+            <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                        <label htmlFor="name">Name:{""}</label><br/>
+                        <label htmlFor="name">Name:</label><br/>
                             <input name="name" 
                             id="name" type="text" 
                             value={newSmurf.name} 
